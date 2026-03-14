@@ -14,3 +14,9 @@ Route::post('/materia', [adminController::class, 'saveMateria'])->name('save.mat
 Route::delete('/materia/eliminar/{id}', [adminController::class, 'deleteMateria'])->name('delete.materia');
 Route::get('/materia/editar/{id}', [adminController::class, 'editarMateria'])->name('editar.materia');
 Route::put('/materia/editar/{id}', [adminController::class, 'updateMateria'])->name('update.materia');
+Route::get('/horario', [adminController::class, 'indexHorario'])->name('index.horario');
+Route::post('/horario', [adminController::class, 'saveHorario'])->name('save.horario');
+Route::delete('/horario/eliminar/{id}', [adminController::class, 'deleteHorario'])->name('delete.horario');
+Route::get('/horario/editar/{id}', [adminController::class, 'editarHorario'])->name('editar.horario');
+Route::put('/horario/editar/{id}', [adminController::class, 'updateHorario'])->name('update.horario');
+

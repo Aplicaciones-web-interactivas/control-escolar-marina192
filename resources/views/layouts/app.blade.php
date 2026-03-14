@@ -9,9 +9,10 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">Usuarios</a></li>
+            <li><a href="{{ route('registro') }}">Usuarios</a></li>
             <li><a href="/">Alumnos</a></li>
-            <li><a href="/materia">Materias</a></li>
+            <li><a href="{{ route('index.materia') }}">Materias</a></li>
+            <li><a href="{{ route('index.horario') }}">Horarios</a></li>
         </ul>
     </nav>
     <main class="py-4">
