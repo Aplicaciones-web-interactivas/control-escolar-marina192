@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->integer('clave')->unique();
             $table->timestamps();
         });
     }

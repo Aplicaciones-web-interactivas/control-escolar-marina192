@@ -11,7 +11,7 @@
         <ul>
             <li><a href="/">Usuarios</a></li>
             <li><a href="/">Alumnos</a></li>
-            <li><a href="/">Materias</a></li>
+            <li><a href="/materia">Materias</a></li>
         </ul>
     </nav>
     <main class="py-4">

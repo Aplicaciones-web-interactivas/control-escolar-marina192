@@ -1,4 +1,4 @@
-@extend('layouts.app')
+@extends('layouts.app')
 @section('content')
 <h1>Materias</h1>
 <div>
@@ -33,7 +33,7 @@
                         @method('DELETE')
                         <button type="submit">Eliminar</button>
                     </form>
-                    <a href="{{ route('update.materia', $materia->id) }}">Editar</a>
+                    <a href="{{ route('editar.materia', $materia->id) }}">Editar</a>
             </tr>
             @endforeach
         </tbody>

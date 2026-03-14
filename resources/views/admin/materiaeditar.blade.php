@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div>>
-        <form action="{{ route('update.materia') }}" method="POST">
+        <form action="{{ route('update.materia', $materia->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div>
