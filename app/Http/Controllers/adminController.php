@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\Materia;
 use App\Models\Horario;
+use App\Models\Grupo;
 
 class adminController extends Controller
 {
@@ -109,5 +110,46 @@ class adminController extends Controller
         $horarioEditar->hora_fin = $request->input('hora_fin');
         $horarioEditar->save();
         return redirect('/horario');
+    }
+
+    public function indexGrupo()
+    {
+        $grupos = Grupo::all()->groupBy('horario_id');
+        return view('admin.grupo')->with('grupos', $grupos);
+    }
+
+    public function saveGrupo(Request $request)
+    {
+        $nuevoGrupo = new Grupo();
+        $nuevoGrupo->nombre = $request->input('nombre');
+        $nuevoGrupo->horario_id = $request->input('horario');
+        $nuevoGrupo->save();
+        return redirect()->back();
+    }
+
+    public function deleteGrupo($id)
+    {
+        $grupoEliminar = Grupo::find($id);
+        if ($grupoEliminar) {
+            $grupoEliminar->delete();
+        } else {
+            return redirect()->back()->withErrors('error', 'Grupo no encontrado');
+        }
+        return redirect()->back();
+    }
+
+    public function editarGrupo($id)
+    {
+        $grupoEditar = Grupo::find($id);
+        return view('admin.grupoeditar')->with('grupo', $grupoEditar);
+    }
+
+    public function updateGrupo(Request $request, $id)
+    {
+        $grupoEditar = Horario::find($id);
+        $grupoEditar->nombre = $request->input('nombre');
+        $grupoEditar->horario_id = $request->input('horario');
+        $grupoEditar->save();
+        return redirect('/grupo');
     }
 }
