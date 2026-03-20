@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('grupo_id');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->unsignedBigInteger('alumno_id');
+            $table->foreign('alumno_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

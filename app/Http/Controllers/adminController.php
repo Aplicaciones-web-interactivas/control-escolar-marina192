@@ -29,6 +29,7 @@ class adminController extends Controller
         $nuevoUsuario->clave = $request->clave;
         $nuevoUsuario->password = $request->password;
         $nuevoUsuario->save();
+        return redirect()->back();
     }
 
     public function saveMateria(Request $request)

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\maestroController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,7 +25,10 @@ Route::post('/grupo', [adminController::class, 'saveGrupo'])->name('save.grupo')
 Route::delete('/grupo/eliminar/{id}', [adminController::class, 'deleteGrupo'])->name('delete.grupo');
 Route::get('/grupo/editar/{id}', [adminController::class, 'editarGrupo'])->name('editar.grupo');
 Route::put('/grupo/editar/{id}', [adminController::class, 'updateGrupo'])->name('update.grupo');
-
 Route::get('/horagrupo', [adminController::class, 'indexHoraGrupo'])->name('index.horagrupo');
 Route::post('/horagrupo', [adminController::class, 'saveHoraGrupo'])->name('save.horagrupo');
 Route::delete('/horagrupo/eliminar/{id}', [adminController::class, 'deleteHoraGrupo'])->name('delete.horagrupo');
+
+Route::get('/inscripcion', [maestroController::class, 'indexInscripcion'])->name('index.inscripcion');
+Route::post('/inscripcion', [maestroController::class, 'saveInscripcion'])->name('save.inscripcion');
+Route::delete('/inscripcion/eliminar/{id}', [maestroController::class, 'deleteInscripcion'])->name('delete.inscripcion');
