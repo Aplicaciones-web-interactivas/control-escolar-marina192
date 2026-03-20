@@ -7,6 +7,7 @@ use App\Models\user;
 use App\Models\Materia;
 use App\Models\Horario;
 use App\Models\Grupo;
+use App\Models\HoraGrupo;
 
 class adminController extends Controller
 {
@@ -114,7 +115,7 @@ class adminController extends Controller
 
     public function indexGrupo()
     {
-        $grupos = Grupo::all()->groupBy('horario_id');
+        $grupos = Grupo::all();
         return view('admin.grupo')->with('grupos', $grupos);
     }
 
@@ -122,7 +123,6 @@ class adminController extends Controller
     {
         $nuevoGrupo = new Grupo();
         $nuevoGrupo->nombre = $request->input('nombre');
-        $nuevoGrupo->horario_id = $request->input('horario');
         $nuevoGrupo->save();
         return redirect()->back();
     }
@@ -146,10 +146,35 @@ class adminController extends Controller
 
     public function updateGrupo(Request $request, $id)
     {
-        $grupoEditar = Horario::find($id);
+        $grupoEditar = Grupo::find($id);
         $grupoEditar->nombre = $request->input('nombre');
-        $grupoEditar->horario_id = $request->input('horario');
         $grupoEditar->save();
         return redirect('/grupo');
+    }
+
+    public function indexHoraGrupo()
+    {
+        $horaGrupos = HoraGrupo::all()->groupBy('grupo_id');
+        return view('admin.horariogrupo')->with('horaGrupos', $horaGrupos);
+    }
+
+    public function saveHoraGrupo(Request $request)
+    {
+        $nuevoHoraGrupo = new HoraGrupo();
+        $nuevoHoraGrupo->grupo_id = $request->input('grupo');
+        $nuevoHoraGrupo->horario_id = $request->input('horario');
+        $nuevoHoraGrupo->save();
+        return redirect()->back();
+    }
+
+    public function deleteHoraGrupo($id)
+    {
+        $horaGrupoEliminar = HoraGrupo::find($id);
+        if ($horaGrupoEliminar) {
+            $horaGrupoEliminar->delete();
+        } else {
+            return redirect()->back()->withErrors('error', 'Horario en el Grupo no encontrado');
+        }
+        return redirect()->back();
     }
 }

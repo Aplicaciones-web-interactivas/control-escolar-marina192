@@ -14,6 +14,7 @@
             <li><a href="{{ route('index.materia') }}">Materias</a></li>
             <li><a href="{{ route('index.horario') }}">Horarios</a></li>
             <li><a href="{{ route('index.grupo') }}">Grupos</a></li>
+            <li><a href="{{ route('index.horagrupo') }}">Horarios de los Grupos</a></li>
         </ul>
     </nav>
     <main class="py-4">

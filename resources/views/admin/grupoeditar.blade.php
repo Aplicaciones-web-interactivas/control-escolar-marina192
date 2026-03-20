@@ -6,9 +6,7 @@
             @method('PUT')
             <div>
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <label for="horario">ID del horario:</label>
-                <input type="number" id="horario" name="horario" required>
+                <input type="text" id="nombre" name="nombre" value="{{ $grupo->nombre }}" required>
             </div>
             <button type="submit">Actualizar Grupo</button>
 @endsection

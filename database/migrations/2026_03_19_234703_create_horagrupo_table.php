@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calificacions', function (Blueprint $table) {
+        Schema::create('horagrupo', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('grupo_id')->constrained('users');
-            $table->unsignedBigInteger('alumno_id');
-            $table->foreign('alumno_id')->references('id')->on('users');
-            $table->float('calificacion');
+            $table->unsignedBigInteger('grupo_id');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->unsignedBigInteger('horario_id');
+            $table->foreign('horario_id')->references('id')->on('horarios');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('calificacions');
+        Schema::dropIfExists('horagrupo');
     }
 };

@@ -19,9 +19,12 @@ Route::post('/horario', [adminController::class, 'saveHorario'])->name('save.hor
 Route::delete('/horario/eliminar/{id}', [adminController::class, 'deleteHorario'])->name('delete.horario');
 Route::get('/horario/editar/{id}', [adminController::class, 'editarHorario'])->name('editar.horario');
 Route::put('/horario/editar/{id}', [adminController::class, 'updateHorario'])->name('update.horario');
-
 Route::get('/grupo', [adminController::class, 'indexGrupo'])->name('index.grupo');
 Route::post('/grupo', [adminController::class, 'saveGrupo'])->name('save.grupo');
 Route::delete('/grupo/eliminar/{id}', [adminController::class, 'deleteGrupo'])->name('delete.grupo');
 Route::get('/grupo/editar/{id}', [adminController::class, 'editarGrupo'])->name('editar.grupo');
 Route::put('/grupo/editar/{id}', [adminController::class, 'updateGrupo'])->name('update.grupo');
+
+Route::get('/horagrupo', [adminController::class, 'indexHoraGrupo'])->name('index.horagrupo');
+Route::post('/horagrupo', [adminController::class, 'saveHoraGrupo'])->name('save.horagrupo');
+Route::delete('/horagrupo/eliminar/{id}', [adminController::class, 'deleteHoraGrupo'])->name('delete.horagrupo');
