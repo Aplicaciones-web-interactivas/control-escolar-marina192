@@ -16,6 +16,7 @@
             <li><a href="{{ route('index.grupo') }}">Grupos</a></li>
             <li><a href="{{ route('index.horagrupo') }}">Horarios de los Grupos</a></li>
             <li><a href="{{ route('index.inscripcion') }}">Inscripciones</a></li>
+            <li><a href="{{ route('index.calificacion') }}">Calificaciones</a></li>
         </ul>
     </nav>
     <main class="py-4">

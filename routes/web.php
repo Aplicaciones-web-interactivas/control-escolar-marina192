@@ -32,3 +32,6 @@ Route::delete('/horagrupo/eliminar/{id}', [adminController::class, 'deleteHoraGr
 Route::get('/inscripcion', [maestroController::class, 'indexInscripcion'])->name('index.inscripcion');
 Route::post('/inscripcion', [maestroController::class, 'saveInscripcion'])->name('save.inscripcion');
 Route::delete('/inscripcion/eliminar/{id}', [maestroController::class, 'deleteInscripcion'])->name('delete.inscripcion');
+
+Route::get('/calificacion', [maestroController::class, 'indexCalificacion'])->name('index.calificacion');
+Route::post('/calificacion', [maestroController::class, 'saveCalificacion'])->name('save.calificacion');
