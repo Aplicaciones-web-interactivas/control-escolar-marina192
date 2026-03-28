@@ -15,4 +15,9 @@ class grupo extends Model
     {
         return $this->hasMany(HoraGrupo::class);
     }
+
+    public function horarios()
+    {
+        return $this->belongsToMany(Horario::class, 'horagrupo');
+    }
 }

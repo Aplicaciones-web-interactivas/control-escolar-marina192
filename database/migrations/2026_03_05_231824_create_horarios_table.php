@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('materia_id')->constrained();
             $table->unsignedBigInteger('maestro_id');
-            $table->foreign('maestro_id')->references('id')->on('users');
+            $table->foreign('maestro_id')->references('clave')->on('users');
             $table->string('dia');
             $table->time('hora_inicio');
             $table->time('hora_fin');

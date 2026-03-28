@@ -13,7 +13,8 @@ class adminController extends Controller
 {
     public function registro()
     {
-        return view('registro');
+        $usuarios = user::all();
+        return view('registro')->with('usuarios', $usuarios);
     }
 
     public function indexMateria()
@@ -25,10 +26,18 @@ class adminController extends Controller
     public function guardarRegistro(Request $request)
     {
         $nuevoUsuario = new user();
-        $nuevoUsuario->nombre = $request->nombre;
         $nuevoUsuario->clave = $request->clave;
+        $nuevoUsuario->nombre = $request->nombre;
         $nuevoUsuario->password = $request->password;
         $nuevoUsuario->save();
+        return redirect()->back();
+    }
+
+    public function actualizarRol(Request $request, $clave)
+    {
+        $usuario = User::findOrFail($clave);
+        $usuario->rol = $request->rol;
+        $usuario->save();
         return redirect()->back();
     }
 

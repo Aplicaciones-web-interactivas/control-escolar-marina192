@@ -25,6 +25,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>ID del horario</th>
                     <th>ID del maestro</th>
                     <th>Día</th>
                     <th>Hora inicio</th>
@@ -35,6 +36,7 @@
             <tbody>
                 @foreach ($grupoHorarios as $horario)
                     <tr>
+                        <td>{{ $horario->id }}</td>
                         <td>{{ $horario->maestro_id }}</td>
                         <td>{{ $horario->dia }}</td>
                         <td>{{ $horario->hora_inicio }}</td>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Grupo;
 use App\Models\Inscripcion;
 use App\Models\Calificacion;
+use App\Models\Horario;
+use App\Models\Tarea;
 
 class maestroController extends Controller
 {
@@ -62,5 +64,29 @@ class maestroController extends Controller
             }
         }
         return redirect()->back()->with('success', 'Calificaciones guardadas correctamente');
+    }
+
+    public function indexTarea()
+    {
+        $horarios = Horario::with('materia')->where('maestro_id', auth()->user()->clave)->get();
+        $tareas = Tarea::with('horario.materia')->whereIn('horario_id', $horarios->pluck('id'))->get();
+        return view('maestro.tarea', compact('horarios','tareas'));
+    }
+
+    public function asignarTarea(Request $request)
+    {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'fecha_entrega' => 'required|date',
+            'horario_id' => 'required|exists:horarios,id',
+        ]);
+        $tarea = new Tarea();
+        $tarea->titulo = $request->input('titulo');
+        $tarea->descripcion = $request->input('descripcion');
+        $tarea->fecha_entrega = $request->input('fecha_entrega');
+        $tarea->horario_id = $request->input('horario_id');
+        $tarea->save();
+        return redirect()->back();
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('calificaciones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('alumno_id');
-            $table->foreign('alumno_id')->references('id')->on('users');
+            $table->foreign('alumno_id')->references('clave')->on('users');
             $table->unsignedBigInteger('horagrupo_id');
             $table->foreign('horagrupo_id')->references('id')->on('horagrupo');
             $table->float('calificacion');

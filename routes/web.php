@@ -1,15 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\maestroController;
+use App\Http\Controllers\alumnoController;
+
+
+Route::get('/welcome', function () { return view('welcome'); })->name('welcome');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login.form');
 });
+Route::get('/login', [loginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [loginController::class, 'login'])->name('login');
+Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 
 Route::get('/registro', [adminController::class, 'registro'])->name('registro');
 Route::post('/guardarRegistro', [adminController::class, 'guardarRegistro'])->name('registro.save');
+Route::put('/registro/{clave}/rol', [adminController::class, 'actualizarRol'])->name('registro.rol');
 Route::get('/materia', [adminController::class, 'indexMateria'])->name('index.materia');
 Route::post('/materia', [adminController::class, 'saveMateria'])->name('save.materia');
 Route::delete('/materia/eliminar/{id}', [adminController::class, 'deleteMateria'])->name('delete.materia');
@@ -28,10 +37,13 @@ Route::put('/grupo/editar/{id}', [adminController::class, 'updateGrupo'])->name(
 Route::get('/horagrupo', [adminController::class, 'indexHoraGrupo'])->name('index.horagrupo');
 Route::post('/horagrupo', [adminController::class, 'saveHoraGrupo'])->name('save.horagrupo');
 Route::delete('/horagrupo/eliminar/{id}', [adminController::class, 'deleteHoraGrupo'])->name('delete.horagrupo');
-
 Route::get('/inscripcion', [maestroController::class, 'indexInscripcion'])->name('index.inscripcion');
 Route::post('/inscripcion', [maestroController::class, 'saveInscripcion'])->name('save.inscripcion');
 Route::delete('/inscripcion/eliminar/{id}', [maestroController::class, 'deleteInscripcion'])->name('delete.inscripcion');
-
 Route::get('/calificacion', [maestroController::class, 'indexCalificacion'])->name('index.calificacion');
 Route::post('/calificacion', [maestroController::class, 'saveCalificacion'])->name('save.calificacion');
+
+Route::get('/tarea', [maestroController::class, 'indexTarea'])->name('index.asignatarea');
+Route::post('/tarea', [maestroController::class, 'asignarTarea'])->name('asignar.tarea');
+
+Route::get('/tarea', [alumnoController::class, 'indexTarea'])->name('index.tarea');

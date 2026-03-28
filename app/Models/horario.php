@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class horario extends Model
 {
+    protected $fillable = ['materia_id','maestro_id','dia','hora_inicio','hora_fin'];
+    
     public function materia()
     {
         return $this->belongsTo(Materia::class);
+    }
+
+    public function maestro()
+    {
+        return $this->belongsTo(User::class, 'maestro_id', 'clave');
     }
 }

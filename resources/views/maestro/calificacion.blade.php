@@ -22,12 +22,12 @@
                             @foreach($grupo->horagrupo as $hg)
                                 @php
                                     $calificacion = $hg->calificaciones
-                                        ->where('alumno_id', $inscripcion->alumno->id)
+                                        ->where('alumno_id', $inscripcion->alumno->clave)
                                         ->first();
                                 @endphp
                                 <td>
                                     <input type="number" step="0.1" min="0" max="10"
-                                        name="calificaciones[{{ $inscripcion->alumno->id }}][{{ $hg->id }}]"
+                                        name="calificaciones[{{ $inscripcion->alumno->clave }}][{{ $hg->id }}]"
                                         value="{{ $calificacion->calificacion ?? '' }}">
                                 </td>
                             @endforeach
